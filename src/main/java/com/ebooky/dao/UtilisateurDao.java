@@ -69,5 +69,25 @@ public class UtilisateurDao {
             return null;
         }
     }
+    public Utilisateur login(String email, String mdp) {
+    	Utilisateur utilisateur=null;
+    	try {
+    		String query = "select * from utilisateur where email=? and mdp=?";
+    		PreparedStatement pstmt = this.con.prepareStatement(query);
+    		pstmt.setString(1, email);
+    		pstmt.setString(2, mdp);
+    		ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+            	utilisateur = new Utilisateur();
+            	utilisateur.setId(rs.getInt("id"));
+            	utilisateur.setNom(rs.getString("nom"));
+            	utilisateur.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+    	return utilisateur;
+    	
+    }
 }
     

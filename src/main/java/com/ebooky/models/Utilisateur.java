@@ -17,7 +17,10 @@ public class Utilisateur {
         this.id_role = id_role;
     }
 
-    public int getId() {
+    public Utilisateur() {
+	}
+
+	public int getId() {
         return id;
     }
 

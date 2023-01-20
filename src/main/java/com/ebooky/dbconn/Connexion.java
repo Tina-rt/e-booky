@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connexion {
-	private static String url = "jdbc:sqlite:path/to/database.db";
+	private static String url = "jdbc:sqlite:booky.db";
     private static Connection con;
 
-    public Connexion() {
+    public static Connection getConnexion() {
         try {
             con = DriverManager.getConnection(url);
             System.out.println("Connexion établie avec succès à la base de données.");
@@ -16,11 +16,9 @@ public class Connexion {
             System.out.println("Impossible d'établir une connexion à la base de données.");
             e.printStackTrace();
         }
+		return con;
     }
     
-    public Connection getConnexion(){
-        return con;
-    }
     public void close() {
         try {
             con.close();
