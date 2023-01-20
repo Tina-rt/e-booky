@@ -12,7 +12,7 @@ public class UtilisateurDao {
     }
     public void insertUser(String nom, String prenom, String email, String mdp,int id_role) {
         try {
-            String query = "INSERT INTO utilisateur (nom, prenom, email, mdp,id_role) VALUES (?, ?, ?, ?,?)";
+            String query = "INSERT INTO Utilisateur (nom, prenom, email, mdp,id_role) VALUES (?, ?, ?, ?,?)";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, nom);
             pstmt.setString(2, prenom);
@@ -29,7 +29,7 @@ public class UtilisateurDao {
 
     public void updateUser(int id, String nom, String prenom, String email, String mdp,int id_role) {
         try {
-            String query = "UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, mdp = ? ,id_role=? WHERE id = ?";
+            String query = "UPDATE Utilisateur SET nom = ?, prenom = ?, email = ?, mdp = ? ,id_role=? WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, nom);
             pstmt.setString(2, prenom);
@@ -46,7 +46,7 @@ public class UtilisateurDao {
         }
     public void deleteUser(int id) {
         try {
-            String query = "DELETE FROM utilisateur WHERE id = ?";
+            String query = "DELETE FROM Utilisateur WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
@@ -58,7 +58,7 @@ public class UtilisateurDao {
     }
     public ResultSet selectUser(int id) {
         try {
-            String query = "SELECT * FROM utilisateur WHERE id = ?";
+            String query = "SELECT * FROM Utilisateur WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -72,7 +72,7 @@ public class UtilisateurDao {
     public Utilisateur login(String email, String mdp) {
     	Utilisateur utilisateur=null;
     	try {
-    		String query = "select * from utilisateur where email=? and mdp=?";
+    		String query = "select * from Utilisateur where email=? and mdp=?";
     		PreparedStatement pstmt = this.con.prepareStatement(query);
     		pstmt.setString(1, email);
     		pstmt.setString(2, mdp);
@@ -84,6 +84,7 @@ public class UtilisateurDao {
             	utilisateur.setEmail(rs.getString("email"));
             }
         } catch (SQLException e) {
+        	System.out.print("=-======");
             System.out.print(e.getMessage());
         }
     	return utilisateur;

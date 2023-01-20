@@ -45,11 +45,11 @@ public class DatabaseHandler {
     public static void createUtilisateurTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Utilisateur ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "titre TEXT NOT NULL, "
-                + "description TEXT NOT NULL, "
-                + "prix REAL NOT NULL, "
-                + "date_publication DATE NOT NULL, "
-                + "id_langue INTEGER NOT NULL"
+                + "nom TEXT NOT NULL,"
+                + "prenom TEXT NOT NULL,"
+                + "email TEXT NOT NULL,"
+                + "mdp TEXT NOT NULL,"
+                + "id_role INTEGER"
                 + ");";
 
         try (Connection conn = getConnection();
