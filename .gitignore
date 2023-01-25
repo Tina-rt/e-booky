@@ -1,5 +1,5 @@
 # Project Ignores Files 
-
+./build
 # Maven
 .mvn
 *.classpath
