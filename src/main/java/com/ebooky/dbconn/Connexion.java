@@ -5,22 +5,25 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connexion {
+	
 	private static String url = "jdbc:sqlite:booky.db";
-    private Connection con;
+    private static Connection con;
 
-    public Connexion() {
+    public static Connection getConnexion() {
         try {
-            this.con = DriverManager.getConnection(url);
+        	
+        	Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection(url);
             System.out.println("Connexion établie avec succès à la base de données.");
         } catch (SQLException e) {
             System.out.println("Impossible d'établir une connexion à la base de données.");
             e.printStackTrace();
-        }
+        } catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return con;
     }
     
-    public Connection getConnexion(){
-        return this.con;
-    }
     public void close() {
         try {
             this.con.close();

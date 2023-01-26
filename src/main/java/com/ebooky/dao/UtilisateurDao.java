@@ -13,7 +13,7 @@ public class UtilisateurDao {
     }
     public void insertUser(Utilisateur utilisateur) {
         try {
-            String query = "INSERT INTO utilisateur (nom, prenom, email, mdp,id_role) VALUES (?, ?, ?, ?,?)";
+            String query = "INSERT INTO Utilisateur (nom, prenom, email, mdp,id_role) VALUES (?, ?, ?, ?,?)";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, utilisateur.getNom());
             pstmt.setString(2, utilisateur.getPrenom());
@@ -30,7 +30,7 @@ public class UtilisateurDao {
 
     public void updateUser(Utilisateur utilisateur) {
         try {
-            String query = "UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, mdp = ? ,id_role=? WHERE id = ?";
+            String query = "UPDATE Utilisateur SET nom = ?, prenom = ?, email = ?, mdp = ? ,id_role=? WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, utilisateur.getNom());
             pstmt.setString(2, utilisateur.getPrenom());
@@ -46,7 +46,7 @@ public class UtilisateurDao {
         }
     public void deleteUser(Utilisateur utilisateur) {
         try {
-            String query = "DELETE FROM utilisateur WHERE id = ?";
+            String query = "DELETE FROM Utilisateur WHERE id = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setInt(1, utilisateur.getId());
             pstmt.executeUpdate();
@@ -107,6 +107,27 @@ public class UtilisateurDao {
             e.printStackTrace();
             return null;
         }
+    }
+    public Utilisateur login(String email, String mdp) {
+    	Utilisateur utilisateur=null;
+    	try {
+    		String query = "select * from Utilisateur where email=? and mdp=?";
+    		PreparedStatement pstmt = this.con.prepareStatement(query);
+    		pstmt.setString(1, email);
+    		pstmt.setString(2, mdp);
+    		ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+            	utilisateur = new Utilisateur();
+            	utilisateur.setId(rs.getInt("id"));
+            	utilisateur.setNom(rs.getString("nom"));
+            	utilisateur.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+        	System.out.print("=-======");
+            System.out.print(e.getMessage());
+        }
+    	return utilisateur;
+    	
     }
 }
     

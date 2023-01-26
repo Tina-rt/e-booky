@@ -50,3 +50,5 @@ $RECYCLE.BIN/
 
 #spring
 .springBeans
+#database
+booky.db-journal
