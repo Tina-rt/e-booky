@@ -16,7 +16,9 @@ public class Utilisateur {
         this.mot_de_passe = mot_de_passe;
         this.id_role = id_role;
     }
-
+    public String toString(){
+        return String.valueOf(this.id) + "-"+this.nom+"-"+String.valueOf(this.id_role);
+    }
     public int getId() {
         return id;
     }
@@ -47,6 +49,13 @@ public class Utilisateur {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId_role(){
+        return this.id_role;
+    }
+    public void setId_role(int id_role){
+        this.id_role = id_role;
     }
 
     public String getMot_de_passe() {

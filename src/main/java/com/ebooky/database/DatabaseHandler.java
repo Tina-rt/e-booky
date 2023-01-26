@@ -29,6 +29,7 @@ public class DatabaseHandler {
 
     public static void createAllTable() {
         createUtilisateurTable();
+        createRoleTable();
         createAchatTable();
         createLivreTable();
         createAuteurTable();
@@ -37,7 +38,6 @@ public class DatabaseHandler {
         createEbookTable();
         createLangueTable();
         createStockTable();
-        createModerateurTable();
         createTypePaiementTable();
         
     }
@@ -45,17 +45,32 @@ public class DatabaseHandler {
     public static void createUtilisateurTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Utilisateur ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "titre TEXT NOT NULL, "
-                + "description TEXT NOT NULL, "
-                + "prix REAL NOT NULL, "
-                + "date_publication DATE NOT NULL, "
-                + "id_langue INTEGER NOT NULL"
+                + "nom TEXT NOT NULL, "
+                + "prenom TEXT NOT NULL, "
+                + "email TEXT NOT NULL, "
+                + "mdp TEXT NOT NULL"
+                
                 + ");";
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
             System.out.println("Table Utilisateur created successfully");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void createRoleTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS Role ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "label TEXT NOT NULL"
+                
+                + ");";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table Role created successfully");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -138,23 +153,7 @@ public class DatabaseHandler {
             System.out.println(e.getMessage());
         }
     }
-    public static void createModerateurTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS Moderateur ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "nom TEXT NOT NULL,"
-                + "prenom TEXT NOT NULL,"
-                + "email TEXT NOT NULL,"
-                + "mdp TEXT NOT NULL"
-                + ");";
-
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            System.out.println("Table Moderator created successfully");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    
     public static void createLangueTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Langue ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
