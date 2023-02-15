@@ -4,7 +4,10 @@ public class Edition {
 	private int id;
 	private String nom;
 	
-	
+	public Edition(){
+            this.id = 0;
+            this.nom = "";
+        }
 	
 	public Edition(int id, String nom) {
 		super();
@@ -23,5 +26,12 @@ public class Edition {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+    @Override
+    public String toString() {
+        return "Edition{" + "id=" + id + ", nom=" + nom + '}';
+    }
+        
+        
 	
 }

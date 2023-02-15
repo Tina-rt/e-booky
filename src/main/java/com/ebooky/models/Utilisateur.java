@@ -16,9 +16,12 @@ public class Utilisateur {
         this.mot_de_passe = mot_de_passe;
         this.id_role = id_role;
     }
-    public Utilisateur() {
-		// TODO Auto-generated constructor stub
-	}
+    
+    public Utilisateur(){
+        
+    }
+    
+    @Override
     public String toString(){
         return String.valueOf(this.id) + "-"+this.nom+"-"+String.valueOf(this.id_role);
     }
