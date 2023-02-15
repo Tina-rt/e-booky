@@ -57,7 +57,7 @@ public class UtilisateurDao {
         }
     }
     public ArrayList<Utilisateur> selectAllUser(){
-    	ArrayList<Utilisateur> all_utilisateur = new ArrayList<Utilisateur>();
+    	ArrayList<Utilisateur> all_utilisateur = new ArrayList<>();
         try {
             String query = "SELECT * FROM Utilisateur";
             PreparedStatement pstmt = con.prepareStatement(query);
