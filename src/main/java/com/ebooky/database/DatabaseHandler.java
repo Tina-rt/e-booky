@@ -28,6 +28,7 @@ public class DatabaseHandler {
     }
 
     public static void createAllTable() {
+        createEditionTable();
         createUtilisateurTable();
         createRoleTable();
         createAchatTable();
@@ -39,6 +40,7 @@ public class DatabaseHandler {
         createLangueTable();
         createStockTable();
         createTypePaiementTable();
+        
         
     }
 
@@ -96,7 +98,12 @@ public class DatabaseHandler {
                 + "description TEXT NOT NULL,"
                 + "prix REAL NOT NULL,"
                 + "date_publication DATE,"
-                + "id_langue INTEGER"
+                + "id_langue INTEGER,"
+                + "id_auteur INTEGER,"
+                +"id_categorie INTEGER,"
+                +"id_edition INTEGER,"
+                + "quantite INTEGER,"
+                + "couverture TEXT"
                 + ");";
 
         try (Connection conn = getConnection();
@@ -112,7 +119,8 @@ public class DatabaseHandler {
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "id_livre INTEGER,"
                 + "taille REAL,"
-                + "extension TEXT NOT NULL"
+                + "extension TEXT NOT NULL,"
+                + "path TEXT NOT NULL"
                 + ");";
 
         try (Connection conn = getConnection();
