@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 			Utilisateur utilisateur = utilisateurDao.login(email, mdp);
 			if (utilisateur != null) {
 				request.getSession().setAttribute("auth", utilisateur);
-				response.sendRedirect("home.jsp");
+				response.sendRedirect("index.jsp");
 			} else {
 				out.println("imposible de trouver l'utilisateur");
 			}
