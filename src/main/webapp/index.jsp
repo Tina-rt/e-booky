@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html;" pageEncoding="UTF-8"%>
+<%@page import="com.ebooky.models.*"%>
+<%
+Utilisateur auth = (Utilisateur) request.getSession().getAttribute("auth");
+if (auth != null) {
+    request.setAttribute("person", auth);
+}%>
 <!DOCTYPE html>
 <html lang="en" style="--bs-primary: #ff9c08;--bs-primary-rgb: 255,156,8;">
 
@@ -8,7 +14,8 @@
     <title>Home - E-booky</title>
     <meta name="description" content="Site de vente de livres">
     <link rel="stylesheet" href="./asset/bootstrap/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="./asset/font-awesome-4.7.0/css/font-awesome.css">
+	
     <link rel="stylesheet" href="./asset/css/styles.css">
 </head>
 
@@ -22,7 +29,29 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="categorie.jsp">Categorie</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.jsp">Contacts</a></li>
-                </ul><button class="btn btn-primary btn-warning icon icon-market rounded" type="button" style="margin-right: 22px;">P</button><a class="btn btn-primary shadow" role="button" href="login.jsp">Se connecter</a>
+                </ul>
+                <button class="btn btn-warning fa fa-shopping-cart" type="button" style="margin-right: 22px;"></button>
+                <%
+				if (auth != null) {
+					
+				%>
+				<div class="nav-item dropdown">
+		          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		            <i class="fa fa-user-circle me-1"></i>  <%=auth.getNom()%>
+		          </a>
+		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+		            <li><a class="dropdown-item" href="#">Profile</a></li>
+		            <li><hr class="dropdown-divider"></li>
+		            <li><a class="dropdown-item" href="logout">Logout</a></li>
+		          </ul>
+		        </div>
+                <%
+				} else {
+				%>
+                <a class="btn btn-primary shadow" role="button" href="./pages/login.jsp">Se connecter</a>
+                <%
+				}
+				%>
             </div>
         </div>
     </nav>
@@ -101,7 +130,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 order-first order-md-last">
-                    <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="./asset/img/teamwork.svg"></div>
+                    <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="../asset/img/teamwork.svg"></div>
                 </div>
             </div>
         </div>
@@ -117,7 +146,7 @@
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/report.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/report.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
@@ -134,7 +163,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/ranking.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/ranking.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
@@ -151,7 +180,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/startup.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/startup.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">

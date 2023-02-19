@@ -1,20 +1,25 @@
 <%@page import="com.ebooky.models.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html;" pageEncoding="UTF-8"%>
+<%Utilisateur auth = (Utilisateur) request.getSession().getAttribute("auth");
+if (auth != null) {
+    request.setAttribute("person", auth);
+}
+%>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
 	<title>E-booky</title>
-	<link rel="stylesheet" href="./asset/css/style.css">
+	<link rel="stylesheet" href="../asset/css/style.css">
 </head>
 
 <body>
 	<div class="login_container">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="inscription">
+				<form action="inscription" method="post">
 					<h1>Crée un compte</h1>
 					<input type="text" name="nom-inscription" placeholder="Nom" />
 					<input type="text" name="prenom-inscription" placeholder="Prenom" />
@@ -24,7 +29,7 @@
 				</form>
 			</div>
 			<div class="form-container sign-in-container">
-				<form action="login-utilisateur" method="post">
+				<form action="login" method="post">
 					<h1>Se connecter</h1>
 					<input type="email" name="email-login" placeholder="Email" />
 					<input type="password" name="mdp-login" placeholder="Mot de passe" />
@@ -47,7 +52,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="./asset/js/script.js"></script>
+		<script src="../asset/js/script.js"></script>
 	</div>
 </body>
 
