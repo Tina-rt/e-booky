@@ -14,7 +14,7 @@
 	<div class="login_container">
 		<div class="container" id="container">
 			<div class="form-container sign-up-container">
-				<form action="#">
+				<form action="inscription">
 					<h1>Crée un compte</h1>
 					<input type="text" name="nom-inscription" placeholder="Nom" />
 					<input type="text" name="prenom-inscription" placeholder="Prenom" />
