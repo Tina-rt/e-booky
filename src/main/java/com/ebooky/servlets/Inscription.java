@@ -13,10 +13,10 @@ import com.ebooky.dao.UtilisateurDao;
 import com.ebooky.dbconn.Connexion;
 import com.ebooky.models.Utilisateur;
 
-@WebServlet("/inscription")
-public class InscriptionServelet extends HttpServlet {
+@WebServlet("/pages/inscription")
+public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public InscriptionServelet() {
+    public Inscription() {
         super();
     }
 
@@ -33,7 +33,7 @@ public class InscriptionServelet extends HttpServlet {
 
 			if (utilisateur != null) {
 					request.getSession().setAttribute("auth", utilisateur);
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("../index.jsp");
 			} else {
 				out.println("L'inscription a echouer");
 				}

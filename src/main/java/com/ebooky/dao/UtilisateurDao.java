@@ -11,21 +11,29 @@ public class UtilisateurDao {
     public UtilisateurDao(Connection con) {
         this.con=con;
     }
-    public void insertUser(Utilisateur utilisateur) {
+    public Utilisateur insertUser(String nom, String prenom, String email, String mdp,int id_role) {
+        Utilisateur utilisateur = null;
         try {
             String query = "INSERT INTO Utilisateur (nom, prenom, email, mdp,id_role) VALUES (?, ?, ?, ?,?)";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, utilisateur.getNom());
-            pstmt.setString(2, utilisateur.getPrenom());
-            pstmt.setString(3, utilisateur.getEmail());
-            pstmt.setString(4, utilisateur.getMot_de_passe());
-            pstmt.setInt(5, utilisateur.getId_role());
+            pstmt.setString(1, nom);
+            pstmt.setString(2, prenom);
+            pstmt.setString(3, email);
+            pstmt.setString(4, mdp);
+            pstmt.setInt(5, id_role);
             pstmt.executeUpdate();
             System.out.println("Utilisateur ajouté avec succès.");
+            utilisateur = new Utilisateur();
+            utilisateur.setNom(nom);
+            utilisateur.setPrenom(prenom);
+            utilisateur.setEmail(email);
+            utilisateur.setMot_de_passe(mdp);
+            utilisateur.setId_role(id_role);
         } catch (SQLException e) {
             System.out.println("Impossible d'ajouter un utilisateur.");
             e.printStackTrace();
         }
+        return utilisateur;
     }
 
     public void updateUser(Utilisateur utilisateur) {
@@ -123,7 +131,6 @@ public class UtilisateurDao {
             	utilisateur.setEmail(rs.getString("email"));
             }
         } catch (SQLException e) {
-        	System.out.print("=-======");
             System.out.print(e.getMessage());
         }
     	return utilisateur;

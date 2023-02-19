@@ -13,7 +13,7 @@ import com.ebooky.dbconn.Connexion;
 import com.ebooky.models.Utilisateur;
 
 
-@WebServlet("/login-utilisateur")
+@WebServlet("/pages/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 			Utilisateur utilisateur = utilisateurDao.login(email, mdp);
 			if (utilisateur != null) {
 				request.getSession().setAttribute("auth", utilisateur);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("../index.jsp");
 			} else {
 				response.sendRedirect("login.jsp");
 			}
