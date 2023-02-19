@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - E-booky</title>
     <meta name="description" content="Site de vente de livres">
-    <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="asset/css/styles.css">
+    <link rel="stylesheet" href="./asset/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./asset/css/styles.css">
 </head>
 
 <body>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 order-first order-md-last">
-                    <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="asset/img/teamwork.svg"></div>
+                    <div><img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px;" src="./asset/img/teamwork.svg"></div>
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="asset/img/report.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/report.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="asset/img/ranking.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/ranking.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="asset/img/startup.svg">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="./asset/img/startup.svg">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
@@ -231,8 +231,8 @@
             </div>
         </div>
     </footer>
-    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
-    <script src="asset/js/script.js"></script>
+    <script src="./asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./asset/js/script.js"></script>
 </body>
 
 </html>

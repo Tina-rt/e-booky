@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Livre - E-booky</title>
     <meta name="description" content="Site de vente de livres">
-    <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="asset/css/styles.css">
+    <link rel="stylesheet" href="./asset/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./asset/css/styles.css">
 </head>
 
 <body>
@@ -67,8 +67,8 @@
             </div>
         </div>
     </footer>
-    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
-    <script src="asset/js/script.js"></script>
+    <script src="./asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./asset/js/script.js"></script>
 </body>
 
 </html>

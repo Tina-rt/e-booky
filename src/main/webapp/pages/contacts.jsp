@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Categorie - E-booky</title>
+    <title>Contacts - E-booky</title>
     <meta name="description" content="Site de vente de livres">
-    <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <link rel="stylesheet" href="asset/css/styles.css">
+    <link rel="stylesheet" href="./asset/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./asset/css/styles.css">
 </head>
 
 <body>
@@ -20,12 +20,34 @@
                     <li class="nav-item"><a class="nav-link" href="index.jsp">Acceuil</a></li>
                     <li class="nav-item"><a class="nav-link" href="livres.jsp">Livres</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link active" href="categorie.jsp">Categorie</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.jsp">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="categorie.jsp">Categorie</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contacts.jsp">Contacts</a></li>
                 </ul><button class="btn btn-primary btn-warning icon icon-market rounded" type="button" style="margin-right: 22px;">P</button><a class="btn btn-primary shadow" role="button" href="login.jsp">Se connecter</a>
             </div>
         </div>
     </nav>
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="display-6 fw-bold mb-4">Des&nbsp;<span class="underline">questions</span>?</h2>
+                    <p class="text-muted">Nos equipes sont toujours prêt à&nbsp; vous repondre. Envoyer nous des messages et nous repondrons le plus rapidement possible.</p>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <div>
+                        <form class="p-3 p-xl-4" method="post">
+                            <div class="mb-3"><input class="shadow form-control" type="text" id="nom" name="nom" placeholder="Nom"></div>
+                            <div class="mb-3"><input class="shadow form-control" type="email" id="email-1" name="email" placeholder="Email"></div>
+                            <div class="mb-3"><textarea class="shadow form-control" id="message-1" name="message" rows="6" placeholder="Message"></textarea></div>
+                            <div><button class="btn btn-primary shadow d-block w-100" type="submit">Envoyer</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer>
         <div class="container py-4 py-lg-5">
             <div class="row row-cols-2 row-cols-md-4">
@@ -67,8 +89,8 @@
             </div>
         </div>
     </footer>
-    <script src="asset/bootstrap/js/bootstrap.min.js"></script>
-    <script src="asset/js/script.js"></script>
+    <script src="./asset/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./asset/js/script.js"></script>
 </body>
 
 </html>
