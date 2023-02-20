@@ -28,7 +28,9 @@ public class DatabaseHandler {
     }
 
     public static void createAllTable() {
+        createEditionTable();
         createUtilisateurTable();
+        createRoleTable();
         createAchatTable();
         createLivreTable();
         createAuteurTable();
@@ -37,8 +39,8 @@ public class DatabaseHandler {
         createEbookTable();
         createLangueTable();
         createStockTable();
-        createModerateurTable();
         createTypePaiementTable();
+        
         
     }
 
@@ -60,10 +62,25 @@ public class DatabaseHandler {
             System.out.println(e.getMessage());
         }
     }
+    public static void createRoleTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS Role ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "label TEXT NOT NULL"
+                
+                + ");";
+
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table Role created successfully");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public static void createEditionTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Edition ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "nom TEXT NOT NULL, "
+                + "nom TEXT NOT NULL"
                 + ");";
 
         try (Connection conn = getConnection();
@@ -81,7 +98,12 @@ public class DatabaseHandler {
                 + "description TEXT NOT NULL,"
                 + "prix REAL NOT NULL,"
                 + "date_publication DATE,"
-                + "id_langue INTEGER"
+                + "id_langue INTEGER,"
+                + "id_auteur INTEGER,"
+                +"id_categorie INTEGER,"
+                +"id_edition INTEGER,"
+                + "quantite INTEGER,"
+                + "couverture TEXT"
                 + ");";
 
         try (Connection conn = getConnection();
@@ -97,7 +119,8 @@ public class DatabaseHandler {
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "id_livre INTEGER,"
                 + "taille REAL,"
-                + "extension TEXT NOT NULL"
+                + "extension TEXT NOT NULL,"
+                + "path TEXT NOT NULL"
                 + ");";
 
         try (Connection conn = getConnection();
@@ -138,23 +161,7 @@ public class DatabaseHandler {
             System.out.println(e.getMessage());
         }
     }
-    public static void createModerateurTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS Moderateur ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "nom TEXT NOT NULL,"
-                + "prenom TEXT NOT NULL,"
-                + "email TEXT NOT NULL,"
-                + "mdp TEXT NOT NULL"
-                + ");";
-
-        try (Connection conn = getConnection();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            System.out.println("Table Moderator created successfully");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    
     public static void createLangueTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Langue ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -190,7 +197,7 @@ public class DatabaseHandler {
     public static void createCommandeTable() {
         String sql = "CREATE TABLE IF NOT EXISTS Commande ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "total BOOLEAN NOT NULL CHECK (total IN (0,1)),"
+                + "total Float NOT NULL,"
                 + "valider TEXT NOT NULL"
                 
                 + ");";
