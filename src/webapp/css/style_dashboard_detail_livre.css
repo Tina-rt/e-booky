@@ -1,0 +1,37 @@
+.detail-section{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    
+}
+.detail-article{
+	display: flex;
+	flex-direction: row;
+}
+
+.couverture-livre{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-precedent{
+    margin: 20px;
+}
+.btn-precedent a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.btn-section .btn{
+    
+    margin-inline: 10px;
+}

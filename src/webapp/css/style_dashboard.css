@@ -1,0 +1,171 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Urbanist';
+    background-color: #e2e2e2;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+}
+.brand{
+    margin-left: 20px;
+}
+
+.menu-list{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.menu-item, .menu-item a{
+    height: 100%;
+    padding-inline: 30px;
+    align-items: center;
+    display: flex;
+    /*border-radius: 10px;*/
+    text-align: center;
+}
+.menu-item{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+.livre-couverture{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.livre-prix span, .quantite span, .livre-auteur span{
+    text-decoration: underline;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.border-bottom{
+    width:50%;
+    border-bottom: 2px solid #FECC0F;
+}
+.menu-item a{
+    text-decoration: none;
+    color: black;
+}
+.menu-item:hover{
+    background-color: #e2e2e2;
+    cursor:pointer;
+}
+
+.card-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card-item{
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:rgb(0, 0, 0);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.card-item:hover{
+    cursor: pointer;
+}
+
+.card-h1{
+    font-size: 2.8em;
+}
+.card-detail{
+    text-align: center;
+}
+
+.bg-main{
+    background-color: #FFE996;
+}
+
+.bg-secondary{
+    background-color: #FECC0F;
+}
+.bg-thirdly{
+    background-color: white;
+    color: black;
+}
+.article{
+    padding: 20px;
+
+}
+.pad{
+    padding: 20px;
+}
+.mg{
+    margin: 10px;
+}
+.border-radius{
+    border-radius: 20px;
+}
+.section-stock-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.list-stock{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.stock-item{
+    margin-inline: 10px;
+    border-left: 2px solid #FECC0F;
+    padding-left: 10px;
+    width: 200px;
+}
+
+.btn, .btn-valider{
+    background-color: black;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    color: white;
+    padding: 10px;
+}
+
+.btn-add{
+   
+    margin-inline: 20px;
+}
+.btn:hover{
+    cursor: pointer;
+
+}
+
+.popup-add{
+    padding: 10px;
+    border: 1px solid black;
+    display: none;
+}
+tr{
+    width: 100%;
+}
+.center-content{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
