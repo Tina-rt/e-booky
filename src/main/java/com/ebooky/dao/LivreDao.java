@@ -135,6 +135,8 @@ public class LivreDao {
                         rs.getInt("id_langue"),
                         rs.getInt("id_categorie")
                 );
+                livre.setAuteur(new Auteur(rs.getInt("id_auteur")));
+                livre.setPage_couverture(rs.getString("couverture"));
             }
             return livre;
         } catch (SQLException e) {

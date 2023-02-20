@@ -123,12 +123,13 @@ public class EditionDao {
             			
             			);
             }
-            return edition;
+            
         } catch (SQLException e) {
             System.out.println("Impossible de sélectionner un Edition.");
             e.printStackTrace();
-            return null;
+            
         }
+        return edition;
     }
     
 }
