@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html;" pageEncoding="UTF-8"%>
-<%@page import="com.ebooky.models.*"%>
+<%@page import="com.ebooky.models.*"%>\
+<%@page import="com.ebooky.dao.*"%>
+<%@page import="com.ebooky.dbconn.*"%>
+<%@page import="java.util.ArrayList"%>
 <%
 Utilisateur auth = (Utilisateur) request.getSession().getAttribute("auth");
+LivreDao livreDao = new LivreDao(Connexion.getConnexion());
+ArrayList<Livre> all_livre = (ArrayList) livreDao.selectAllLivre();
+CategorieDao categorieDao = new CategorieDao(Connexion.getConnexion());
+ArrayList<Categorie> all_categorie =(ArrayList) categorieDao.selectAllCategorie();
 if (auth != null) {
     request.setAttribute("person", auth);
 }%>
@@ -25,10 +32,10 @@ if (auth != null) {
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.jsp">Acceuil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="livres.jsp">Livres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./pages/livres.jsp">Livres</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="categorie.jsp">Categorie</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.jsp">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./pages/categorie.jsp">Categorie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./pages/contacts.jsp">Contacts</a></li>
                 </ul>
                 <button class="btn btn-warning fa fa-shopping-cart" type="button" style="margin-right: 22px;"></button>
                 <%
@@ -42,7 +49,7 @@ if (auth != null) {
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 		            <li><a class="dropdown-item" href="#">Profile</a></li>
 		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="logout">Logout</a></li>
+		            <li><a class="dropdown-item" href="logout">Se deconecter</a></li>
 		          </ul>
 		        </div>
                 <%
@@ -144,59 +151,29 @@ if (auth != null) {
                     <p class="text-muted">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc. Vestibulum dui eget ultrices.</p>
                 </div>
             </div>
+            
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/report.svg">
+                <%                           
+               for (int i=0; i < all_livre.size();i++){
+                                    %>
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="<%=all_livre.get(i).getPage_couverture()%>">
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication">05-22-2006</p>
+                                    <p class="text-primary mb-0" id="date-publication"><%=all_livre.get(i).getDate_de_publication()%></p>
                                 </div>
                                 <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication-1" style="font-style: italic;">Categorie</p>
+                                    <p class="text-primary mb-0" id="categorie" style="font-style: italic;"><%=all_categorie.get(all_livre.get(i).getId_categorie()).getLabel()%></p>
                                 </div>
                             </div>
-                            <h4 class="card-title" id="titre-llivre" style="font-weight: bold;">Why windows users are stupid?</h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            <div class="d-flex"><button class="btn btn-primary" type="button">Free</button></div>
+                            <h4 class="card-title" id="titre-llivre" style="font-weight: bold;"><%=all_livre.get(i).getTitre()%></h4>
+                            <p class="card-text"><%=all_livre.get(i).getDescription()%></p>
+                            <div class="d-flex"><button class="btn btn-primary" type="button"><%=all_livre.get(i).getPrix()%></button></div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/ranking.svg">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication-4">05-22-2006</p>
-                                </div>
-                                <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication-5" style="font-style: italic;">Devellopement</p>
-                                </div>
-                            </div>
-                            <h4 class="card-title" id="titre-llivre" style="font-weight: bold;">Machin learning for baby</h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            <div class="d-flex"><button class="btn btn-primary" type="button">60000 Ar</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="../asset/img/startup.svg">
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication-2">05-22-2006</p>
-                                </div>
-                                <div class="col">
-                                    <p class="text-primary mb-0" id="date-publication-3" style="font-style: italic;">Novel</p>
-                                </div>
-                            </div>
-                            <h4 class="card-title" id="titre-llivre" style="font-weight: bold;">The Begining After The End</h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                            <div class="d-flex"><button class="btn btn-primary" type="button">90000 Ar</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <%}; %>
             <div class="row">
                 <div class="col" style="margin-bottom: -62px;padding-bottom: 0px;padding-top: 34px;">
                     <div class="row mb-5">
@@ -215,7 +192,7 @@ if (auth != null) {
                     <h2 class="fw-bold text-warning mb-2">Des remarques?</h2>
                     <p class="mb-0">Contactez-nous</p>
                 </div>
-                <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="contacts.jsp">Contactez-nous</a></div>
+                <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="./pages/contacts.jsp">Contactez-nous</a></div>
             </div>
         </div>
     </section>

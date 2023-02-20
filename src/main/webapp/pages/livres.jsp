@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html;" pageEncoding="UTF-8"%>
-<%@page import="com.ebooky.models.*"%>
+<%@page import="com.ebooky.models.*"%>\
+<%@page import="com.ebooky.dao.*"%>
+<%@page import="com.ebooky.dbconn.*"%>
+<%@page import="java.util.ArrayList"%>
 <%
 Utilisateur auth = (Utilisateur) request.getSession().getAttribute("auth");
+LivreDao livreDao = new LivreDao(Connexion.getConnexion());
+ArrayList<Livre> all_livre = (ArrayList) livreDao.selectAllLivre();
+CategorieDao categorieDao = new CategorieDao(Connexion.getConnexion());
+ArrayList<Categorie> all_categorie =(ArrayList) categorieDao.selectAllCategorie();
 if (auth != null) {
     request.setAttribute("person", auth);
 }%>
@@ -26,11 +33,11 @@ if (auth != null) {
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.jsp">Acceuil</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="livres.jsp">Livres</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.jsp">Acceuil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./pages/livres.jsp">Livres</a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="categorie.jsp">Categorie</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contacts.jsp">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./pages/categorie.jsp">Categorie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./pages/contacts.jsp">Contacts</a></li>
                 </ul>
                 <% if (auth !=null) { %>
                     <div class="nav-item dropdown">
@@ -53,6 +60,28 @@ if (auth != null) {
             </div>
         </div>
     </nav>
+                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <div class="col">
+                <%                           
+               for (int i=0; i < all_livre.size();i++){
+                                    %>
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="<%=all_livre.get(i).getPage_couverture()%>">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="text-primary mb-0" id="date-publication"><%=all_livre.get(i).getDate_de_publication()%></p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-primary mb-0" id="categorie" style="font-style: italic;"><%=all_categorie.get(all_livre.get(i).getId_categorie()).getLabel()%></p>
+                                </div>
+                            </div>
+                            <h4 class="card-title" id="titre-llivre" style="font-weight: bold;"><%=all_livre.get(i).getTitre()%></h4>
+                            <p class="card-text"><%=all_livre.get(i).getDescription()%></p>
+                            <div class="d-flex"><button class="btn btn-primary" type="button"><%=all_livre.get(i).getPrix()%></button></div>
+                        </div>
+                    </div>
+                </div>
+                <%}; %>
     <section class="py-5 mt-5"></section>
     <footer>
         <div class="container py-4 py-lg-5">
@@ -69,6 +98,7 @@ if (auth != null) {
                         <li></li>
                     </ul>
                 </div>
+                
                 <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column">
                     <h3 class="fs-6 fw-bold">Appropos</h3>
                     <ul class="list-unstyled">

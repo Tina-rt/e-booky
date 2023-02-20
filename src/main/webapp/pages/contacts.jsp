@@ -26,11 +26,11 @@ if (auth != null) {
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.jsp">Acceuil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="livres.jsp">Livres</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.jsp">Acceuil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./pages/livres.jsp">Livres</a></li>
                         <li class="nav-item"></li>
-                        <li class="nav-item"><a class="nav-link" href="categorie.jsp">Categorie</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="contacts.jsp">Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./pages/categorie.jsp">Categorie</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="./pages/contacts.jsp">Contacts</a></li>
                     </ul>
                     <% if (auth !=null) { %>
                         <div class="nav-item dropdown">
