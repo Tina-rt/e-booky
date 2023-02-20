@@ -13,6 +13,7 @@ import com.ebooky.dbconn.Connexion;
 import com.ebooky.models.Categorie;
 import com.ebooky.models.Langue;
 import com.ebooky.models.Livre;
+import com.ebooky.models.Edition;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
